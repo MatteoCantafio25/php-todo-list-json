@@ -23,14 +23,55 @@
     />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+      integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <!-- JavaScript -->
-    <script src="js/data.js"></script>
     <script defer src="js/script.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- App -->
+    <div
+      id="root"
+      class="d-flex justify-content-center align-items-center flex-column"
+    >
+      <h1 class="mb-4">Todo List</h1>
+      <!-- Card -->
+      <div class="card w-400">
+        <!-- List -->
+        <ul class="list-group list-group-flush">
+          <li
+            v-for="(task, i) in tasks"
+            :key="i"
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            {{task.text}}
+            <i role="button" class="fas fa-x"></i>
+          </li>
+        </ul>
+        <!-- Form -->
+        <form @submit.prevent="addTask">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Inserisci elemento..."
+              v-model.trim="newTask"
+            />
+            <button class="btn btn-outline-warning" type="submit">
+              Inserisci
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
