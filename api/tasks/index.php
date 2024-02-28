@@ -19,7 +19,7 @@ $new_task_name = $_POST['task'] ?? '';
 // Controllo se ho un nuovo task
 if(!empty($new_task_name)){
 
-    // Creo un nuovo tast sotto forma di oggetto
+    // Creo un nuovo task sotto forma di oggetto
     $new_task = new stdClass();
     $new_task->id = count($tasks) + 1;
     $new_task->text = $new_task_name;
@@ -28,7 +28,7 @@ if(!empty($new_task_name)){
     // Aggiungo il new_task all'array tasks
     $tasks[] = $new_task;  
     
-    // RRiconverto l'array di task in json
+    // Riconverto l'array di task in json
     $tasks_json = json_encode($tasks);
 
     //Sovrascrivo l'array originale
